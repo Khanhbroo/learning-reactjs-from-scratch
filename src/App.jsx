@@ -1,38 +1,14 @@
-import reactImg from "./assets/react-core-concepts.png";
-import componentsImg from "./assets/components.png";
+import { CORE_CONCEPTS } from "./data.js";
 
-const reactDescriptions = ["Fundamental", "Crucial", "Core"];
+import Header from "./components/Header/Header.jsx";
+import CoreConcept from "./components/CoreConcept.jsx";
+import TabButton from "./components/TabButton.jsx";
 
-const genRandomInt = (max) => {
-  return Math.floor(Math.random() * max);
-};
+const App = () => {
+  const handleSelect = (selectedButton) => {
+    alert("Hello World!");
+  };
 
-const Header = () => {
-  const description = reactDescriptions[genRandomInt(reactDescriptions.length)];
-
-  return (
-    <header>
-      <img src={reactImg} alt="Stylized atom" />
-      <h1>React Essentials</h1>
-      <p>
-        {description} React concepts you will need for almost any app you are
-        going to build!
-      </p>
-    </header>
-  );
-};
-
-const CoreConcept = (props) => {
-  return (
-    <li>
-      <img src={props.image} alt={props.title} />
-      <h3>{props.title}</h3>
-      <p>{props.description}</p>
-    </li>
-  );
-};
-
-function App() {
   return (
     <div>
       <Header />
@@ -40,19 +16,25 @@ function App() {
         <section id="core-concepts">
           <h2>Time to get started!</h2>
           <ul>
-            <CoreConcept
-              title="Components"
-              description="The core UI building block."
-              image={componentsImg}
-            />
-            <CoreConcept />
-            <CoreConcept />
-            <CoreConcept />
+            <CoreConcept {...CORE_CONCEPTS[0]} />
+            <CoreConcept {...CORE_CONCEPTS[1]} />
+            <CoreConcept {...CORE_CONCEPTS[2]} />
+            <CoreConcept {...CORE_CONCEPTS[3]} />
           </ul>
+        </section>
+
+        <section id="examples">
+          <h2>Example</h2>
+          <menu>
+            <TabButton onSelect={handleSelect}>Components</TabButton>
+            <TabButton>JSX</TabButton>
+            <TabButton>Props</TabButton>
+            <TabButton>State</TabButton>
+          </menu>
         </section>
       </main>
     </div>
   );
-}
+};
 
 export default App;
