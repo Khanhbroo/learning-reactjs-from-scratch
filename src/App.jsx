@@ -28,7 +28,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <>
       <Header />
       <main>
         <section id="core-concepts">
@@ -71,7 +71,7 @@ const App = () => {
         </section>
         <div id="tab-content">{tabContent}</div>
       </main>
-    </div>
+    </>
   );
 };
 
